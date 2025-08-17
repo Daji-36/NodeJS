@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
+    "prepare": "husky",
     "beautify": "lint-staged",
     "start": "nodemon --inspect src/index.js",
     "watch": "sass src/resources/scss:src/public/css --watch",
@@ -18,11 +19,6 @@
   },
   "lint-staged": {
     "src/**/*.{js,json,scss}": "prettier --write --single-quote --trailing-comma all --tab-width 4"
-  },
-  "husky":{
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "devDependencies": {
     "husky": "^9.1.7",
