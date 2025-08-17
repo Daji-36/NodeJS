@@ -8,7 +8,6 @@ class SiteController {
     search(req, res) {
         res.render('search');
     }
-
 }
 
-module.exports = new SiteController; // Xuất SiteController
+module.exports = new SiteController(); // Xuất SiteController
