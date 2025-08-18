@@ -26,12 +26,12 @@ app.engine(
         extname: '.hbs',
     }),
 ); // Từ phiên bản express-handlebars mới, cần sử dụng handlebars.engine()
-                app.set('view engine', 'hbs');
+app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources/views'));
 
 // Routes
-            route(app);
+route(app);
 
 app.listen(port, () =>
-                console.log(`Server is running at http://localhost:${port}`),
+    console.log(`Server is running at http://localhost:${port}`),
 );
