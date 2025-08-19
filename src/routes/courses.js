@@ -8,6 +8,8 @@ const { mongo } = require('mongoose');
 // Tuyến '/' luôn nằm cuối cùng
 // Tuyến đường nào mới nhất sẽ được xử lý trước
 
+router.delete('/:id', courseController.delete);
+
 router.put('/:id', courseController.update);
 
 router.get('/:id/edit', courseController.edit);
