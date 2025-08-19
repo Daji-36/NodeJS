@@ -7,6 +7,11 @@ const { mongo } = require('mongoose');
 // courseController.index là hàm xử lý cho các yêu cầu đến /courses
 // Tuyến '/' luôn nằm cuối cùng
 // Tuyến đường nào mới nhất sẽ được xử lý trước
+
+router.put('/:id', courseController.update);
+
+router.get('/:id/edit', courseController.edit);
+
 router.get('/create', courseController.create);
 
 router.post('/store', courseController.store);

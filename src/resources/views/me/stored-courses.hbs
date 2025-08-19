@@ -1,0 +1,29 @@
+<div class="mt-4">
+    <h2>Khóa học của tôi</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Tên khóa học</th>
+                <th>Trình độ</th>
+                <th colspan="2">Thời gian tạo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each courses}}
+                <tr>
+                    <th>{{inc @index}}</th>
+                    <td>{{this.name}}</td>
+                    <td>{{this.levels}}</td>
+                    <td>{{this.createdAt}}</td>
+                    <td>
+                        <a href="/courses/{{this._id}}/edit" class="btn btn-warning">Sửa</a>
+                        <form action="/courses/{{this._id}}/delete" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-danger">Xóa</button>
+                        </form>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

@@ -26,6 +26,22 @@ class CourseController {
             .then(() => res.redirect('/'))
             .catch((err) => {});
     }
+    // [GET] /courses/edit/:id
+    edit(req, res, next) {
+        Course.findById(req.params.id)
+            .then((course) => {
+                res.render('courses/edit', {
+                    course: mongooseToObject(course), // Chuyển đổi đối tượng Mongoose thành đối tượng thuần JavaScript
+                });
+            })
+            .catch((err) => next(err));
+    }
+    // [PUT] /courses/:id/
+    update(req, res, next) {
+        Course.updateOne({ _id: req.params.id }, req.body)
+            .then(() => res.redirect('/me/stored/courses'))
+            .catch((err) => next(err));
+    }
 }
 
 module.exports = new CourseController(); // Xuất CourseController

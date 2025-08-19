@@ -1,5 +1,6 @@
 const express = require('express');
-const morgan = require('morgan');
+// const morgan = require('morgan');
+const methodOverride = require('method-override');
 const handlebars = require('express-handlebars');
 const path = require('path');
 const app = express();
@@ -28,10 +29,16 @@ app.engine(
     'hbs',
     handlebars.engine({
         extname: '.hbs',
+        helpers: {
+            inc: (value) => parseInt(value) + 1,
+        },
     }),
 ); // Từ phiên bản express-handlebars mới, cần sử dụng handlebars.engine()
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
+
+// override with POST having ?_method=DELETE
+app.use(methodOverride('_method'));
 
 // Routes
 route(app);
