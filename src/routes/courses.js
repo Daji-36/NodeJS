@@ -8,6 +8,10 @@ const { mongo } = require('mongoose');
 // Tuyến '/' luôn nằm cuối cùng
 // Tuyến đường nào mới nhất sẽ được xử lý trước
 
+router.delete('/:id/force', courseController.forceDelete);
+
+router.patch('/:id/restore', courseController.restore);
+
 router.delete('/:id', courseController.delete);
 
 router.put('/:id', courseController.update);
