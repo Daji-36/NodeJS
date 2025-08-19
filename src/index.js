@@ -6,6 +6,10 @@ const app = express();
 const port = 3000;
 
 const route = require('./routes');
+const db = require('./config/db');
+
+//Connect to DB
+db.connect();
 
 // Static files
 app.use(express.static(path.join(__dirname, 'public')));
@@ -27,11 +31,9 @@ app.engine(
     }),
 ); // Từ phiên bản express-handlebars mới, cần sử dụng handlebars.engine()
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'resources/views'));
+app.set('views', path.join(__dirname, 'resources', 'views'));
 
 // Routes
 route(app);
 
-app.listen(port, () =>
-    console.log(`Server is running at http://localhost:${port}`),
-);
+app.listen(port, () => console.log(`Server: http://localhost:${port}`));
